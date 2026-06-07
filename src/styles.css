@@ -157,7 +157,6 @@
   background: var(--color-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-2xl);
-  box-shadow: var(--shadow-soft);
   transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 @utility card-elev-hover {
@@ -167,3 +166,4 @@
     border-color: color-mix(in oklab, var(--color-primary) 25%, var(--color-border));
   }
 }
+

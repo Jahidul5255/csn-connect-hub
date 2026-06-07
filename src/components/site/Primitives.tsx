@@ -62,11 +62,12 @@ export function CTAButton({
   const base =
     "group inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition";
   const styles = {
-    primary: "bg-primary text-primary-foreground shadow-[0_10px_24px_-10px_color-mix(in_oklab,var(--color-primary)_70%,transparent)] hover:opacity-90",
+    primary: "bg-primary text-primary-foreground hover:opacity-90 hover:shadow-[0_10px_24px_-10px_color-mix(in_oklab,var(--color-primary)_70%,transparent)]",
     secondary: "border border-border bg-card text-foreground hover:border-foreground/30",
     ghost: "text-foreground hover:bg-secondary",
-    danger: "bg-[color:var(--brand-red)] text-white hover:opacity-90",
+    danger: "bg-[color:var(--brand-red)] text-white hover:opacity-90 hover:shadow-[0_10px_24px_-10px_color-mix(in_oklab,var(--brand-red)_70%,transparent)]",
   }[variant];
+
 
   const content = (
     <>
