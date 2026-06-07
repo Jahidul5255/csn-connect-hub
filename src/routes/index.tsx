@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   Plane, Scale, GraduationCap, Languages, ShieldCheck, Building2,
-  Users, Globe2, Sparkles, Star, Quote, Briefcase, BookOpen, MapPin, Headphones,
+  Users, Globe2, Sparkles, Star, Quote, Briefcase, BookOpen, MapPin, Headphones, ArrowUpRight,
 } from "lucide-react";
 import { Section, SectionHeading, CTAButton, StatCard, FeatureCard, Eyebrow } from "@/components/site/Primitives";
 import heroImg from "@/assets/hero-community.jpg";
@@ -63,59 +63,107 @@ function HomePage() {
   return (
     <>
       {/* HERO */}
-      <section className="relative overflow-hidden border-b border-border bg-[color:var(--color-surface-2)]">
-        <div className="pointer-events-none absolute -right-40 -top-40 h-[520px] w-[520px] rounded-full bg-primary/10 blur-3xl" />
-        <div className="pointer-events-none absolute -left-32 bottom-0 h-[360px] w-[360px] rounded-full bg-[color:var(--brand-olive)]/15 blur-3xl" />
-        <div className="container-x relative grid items-center gap-12 py-16 md:py-24 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
+      <section className="relative overflow-hidden bg-background">
+        <div className="container-x relative grid items-center gap-12 py-16 md:py-24 lg:grid-cols-[1.1fr_1fr] lg:gap-10">
+          {/* LEFT */}
           <div>
-            <span className="chip">
-              <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--brand-red)]" />
-              Trusted since 2011 · 200+ branches
-            </span>
-            <h1 className="mt-5 text-balance font-display text-5xl font-bold leading-[1.02] text-foreground md:text-7xl">
-              Your trusted gateway to <span className="text-primary">services</span> & opportunities in Italy.
+            <h1 className="font-display text-5xl font-extrabold leading-[1.02] tracking-tight text-foreground md:text-7xl">
+              Your Gateway to<br />
+              Trusted Services &amp;<br />
+              <span className="text-[color:var(--brand-red)]">Opportunities</span><br />
+              Across Italy
             </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-              Supporting Bangladeshi communities across Italy through travel, legal,
-              educational and business services for over 14 years.
+            <p className="mt-7 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
+              Supporting Bangladeshi communities across Italy through travel solutions, legal
+              assistance, education and business services for over 14 years.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <CTAButton to="/services">Explore Services</CTAButton>
-              <CTAButton to="/contact" variant="secondary">Contact Us</CTAButton>
-            </div>
-
-            <div className="mt-10 flex items-center gap-6 text-sm text-muted-foreground">
-              <div className="flex -space-x-2">
-                {[1,2,3,4].map(i => (
-                  <div key={i} className="h-8 w-8 rounded-full border-2 border-background bg-gradient-to-br from-primary/40 to-[color:var(--brand-sky)]/40" />
-                ))}
-              </div>
-              <div>
-                <div className="flex items-center gap-1 text-foreground">
-                  {[...Array(5)].map((_,i) => <Star key={i} className="h-3.5 w-3.5 fill-[color:var(--brand-olive)] text-[color:var(--brand-olive)]" />)}
-                  <span className="ml-1 font-semibold">4.9</span>
-                </div>
-                <div>Trusted by 10,000+ families across Italy</div>
-              </div>
+            <div className="mt-9 flex flex-wrap items-center gap-4">
+              <Link
+                to="/services"
+                className="group inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-[0_14px_30px_-12px_color-mix(in_oklab,var(--color-primary)_70%,transparent)] transition hover:opacity-90"
+              >
+                Explore Services
+                <span className="grid h-5 w-5 place-items-center rounded-full bg-white/15 transition group-hover:translate-x-0.5">
+                  <ArrowUpRight className="h-3.5 w-3.5" />
+                </span>
+              </Link>
+              <Link
+                to="/contact"
+                className="inline-flex items-center rounded-full border border-border bg-card px-7 py-3.5 text-sm font-semibold text-foreground transition hover:border-foreground/30"
+              >
+                Contact&nbsp; Us
+              </Link>
             </div>
           </div>
 
+          {/* RIGHT — colorful gradient panel with stat cards + badge */}
           <div className="relative">
-            <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-[0_30px_80px_-30px_rgba(35,118,151,0.35)]">
-              <img src={heroImg} alt="CSN Bangladesh community in Italy" className="aspect-[5/6] w-full object-cover" width={1600} height={1920} />
-            </div>
-            <div className="absolute -left-6 bottom-8 hidden w-64 rounded-2xl border border-border bg-card/95 p-4 shadow-xl backdrop-blur md:block">
-              <div className="flex items-center gap-3">
-                <div className="grid h-10 w-10 place-items-center rounded-xl bg-primary text-primary-foreground"><ShieldCheck className="h-5 w-5" /></div>
-                <div>
-                  <div className="text-xs text-muted-foreground">Verified ecosystem</div>
-                  <div className="text-sm font-semibold">10+ trusted brands</div>
+            <div
+              className="relative aspect-[5/4] w-full overflow-hidden rounded-[28px]"
+              style={{
+                background:
+                  "linear-gradient(90deg, #FFE066 0%, #F2E96A 14%, #B6E27A 28%, #7DD0B0 42%, #6FC9D8 56%, #8FD3F4 70%, #F4B3A0 84%, #E9262A 100%)",
+              }}
+            >
+              {/* horizontal slatted lines for the bar effect */}
+              <div
+                aria-hidden
+                className="absolute inset-0"
+                style={{
+                  backgroundImage:
+                    "repeating-linear-gradient(0deg, transparent 0 78px, rgba(255,255,255,0.55) 78px 86px)",
+                  mixBlendMode: "screen",
+                  opacity: 0.55,
+                }}
+              />
+              <div
+                aria-hidden
+                className="absolute inset-0"
+                style={{
+                  backgroundImage:
+                    "repeating-linear-gradient(90deg, transparent 0 130px, rgba(255,255,255,0.35) 130px 132px)",
+                }}
+              />
+
+              {/* 14 years circular badge */}
+              <div className="absolute left-6 top-1/2 hidden -translate-y-1/2 md:block">
+                <div className="relative grid h-44 w-44 place-items-center rounded-full bg-white/90 shadow-xl backdrop-blur">
+                  <svg viewBox="0 0 200 200" className="absolute inset-0 h-full w-full animate-[spin_30s_linear_infinite]">
+                    <defs>
+                      <path id="badgeCircle" d="M 100,100 m -78,0 a 78,78 0 1,1 156,0 a 78,78 0 1,1 -156,0" />
+                    </defs>
+                    <text fill="currentColor" className="text-foreground" style={{ fontSize: "15px", letterSpacing: "6px", fontFamily: "var(--font-display)", fontWeight: 600 }}>
+                      <textPath href="#badgeCircle" startOffset="0">
+                        14 YEARS OF EXPERIENCE · 14 YEARS OF EXPERIENCE ·
+                      </textPath>
+                    </text>
+                  </svg>
+                  <div className="flex flex-col items-center">
+                    <div className="font-display text-5xl font-bold text-primary">14</div>
+                    <div className="mt-2 flex gap-1 text-[color:var(--brand-olive)]">
+                      <Star className="h-3 w-3 fill-current" />
+                      <Star className="h-3 w-3 fill-current" />
+                      <Star className="h-3 w-3 fill-current" />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-            <div className="absolute -right-4 -top-4 hidden rounded-2xl border border-border bg-card/95 p-4 shadow-xl backdrop-blur md:block">
-              <div className="text-xs uppercase tracking-wider text-muted-foreground">This year</div>
-              <div className="mt-1 font-display text-2xl font-bold text-foreground">+38% <span className="text-sm font-medium text-[color:var(--brand-green)]">growth</span></div>
+
+            {/* Stat cards floating on the right */}
+            <div className="absolute right-3 top-6 flex w-[58%] flex-col gap-4 md:right-6">
+              {[
+                { value: "200+", label: "Branches across Italy", color: "var(--color-primary)" },
+                { value: "7+", label: "Provinces served", color: "var(--brand-green)" },
+                { value: "10+", label: "Ecosystem brands", color: "var(--brand-olive)" },
+              ].map((s) => (
+                <div key={s.label} className="rounded-2xl bg-card/95 p-5 shadow-[0_18px_40px_-18px_rgba(15,35,60,0.25)] backdrop-blur">
+                  <div className="font-display text-4xl font-bold tracking-tight" style={{ color: s.color }}>
+                    {s.value}
+                  </div>
+                  <div className="mt-1 text-sm font-medium text-muted-foreground">{s.label}</div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
