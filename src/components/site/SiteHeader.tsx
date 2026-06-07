@@ -122,7 +122,7 @@ export function SiteHeader() {
           <div className="hidden items-center gap-2 lg:flex">
             <Link
               to="/contact"
-              className="inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-[0_8px_20px_-8px_color-mix(in_oklab,var(--color-primary)_60%,transparent)] transition hover:opacity-90"
+              className="inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition hover:opacity-90 hover:shadow-[0_8px_20px_-8px_color-mix(in_oklab,var(--color-primary)_60%,transparent)]"
             >
               Contact Us
             </Link>
