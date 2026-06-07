@@ -1,10 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   Plane, Scale, GraduationCap, Languages, ShieldCheck, Building2,
-  Users, Globe2, Sparkles, Star, Quote, Briefcase, BookOpen, MapPin, Headphones,
+  Users, Globe2, Quote, Briefcase, BookOpen, MapPin, Headphones, Star,
 } from "lucide-react";
-import { Section, SectionHeading, CTAButton, StatCard, FeatureCard, Eyebrow } from "@/components/site/Primitives";
-import heroImg from "@/assets/hero-community.jpg";
+import { Section, SectionHeading, CTAButton, FeatureCard, Eyebrow } from "@/components/site/Primitives";
 import meshImg from "@/assets/abstract-mesh.jpg";
 
 export const Route = createFileRoute("/")({
@@ -14,7 +13,6 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Travel, legal, education and business services trusted by Bangladeshi families across Italy. 14+ years, 200+ branches, 7+ provinces." },
       { property: "og:title", content: "CSN Bangladesh — Trusted Services for the Bangladeshi Community in Italy" },
       { property: "og:description", content: "A trusted ecosystem connecting Bangladeshi communities in Italy with travel, legal, education and business services." },
-      { property: "og:image", content: heroImg },
     ],
   }),
   component: HomePage,
@@ -59,21 +57,28 @@ const testimonials = [
   { name: "Tanvir Hossain", role: "Travel Reseller · Bologna", quote: "I opened a CSN Travel reseller in two weeks. Real tools, real support, real customers." },
 ];
 
+const heroStats = [
+  { value: "14+", label: "Years of experience", accent: "var(--color-primary)" },
+  { value: "200+", label: "Branches across Italy", accent: "var(--brand-sky)" },
+  { value: "7+", label: "Provinces served", accent: "var(--brand-green)" },
+  { value: "10+", label: "Ecosystem brands", accent: "var(--brand-olive)" },
+];
+
 function HomePage() {
   return (
     <>
       {/* HERO */}
       <section className="relative overflow-hidden border-b border-border bg-[color:var(--color-surface-2)]">
-        <div className="pointer-events-none absolute -right-40 -top-40 h-[520px] w-[520px] rounded-full bg-primary/10 blur-3xl" />
-        <div className="pointer-events-none absolute -left-32 bottom-0 h-[360px] w-[360px] rounded-full bg-[color:var(--brand-olive)]/15 blur-3xl" />
-        <div className="container-x relative grid items-center gap-12 py-16 md:py-24 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
+        <div className="pointer-events-none absolute -right-40 -top-40 h-[520px] w-[520px] rounded-full bg-[color:var(--brand-red)]/10 blur-3xl" />
+        <div className="pointer-events-none absolute -left-32 bottom-0 h-[360px] w-[360px] rounded-full bg-primary/10 blur-3xl" />
+        <div className="container-x relative grid items-center gap-12 py-16 md:py-24 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
           <div>
             <span className="chip">
               <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--brand-red)]" />
               Trusted since 2011 · 200+ branches
             </span>
             <h1 className="mt-5 text-balance font-display text-5xl font-bold leading-[1.02] text-foreground md:text-7xl">
-              Your trusted gateway to <span className="text-primary">services</span> & opportunities in Italy.
+              Your trusted gateway to <span className="text-[color:var(--brand-red)]">services</span> & opportunities in Italy.
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
               Supporting Bangladeshi communities across Italy through travel, legal,
@@ -100,51 +105,34 @@ function HomePage() {
             </div>
           </div>
 
+          {/* Trust stat cards */}
           <div className="relative">
-            <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-[0_30px_80px_-30px_rgba(35,118,151,0.35)]">
-              <img src={heroImg} alt="CSN Bangladesh community in Italy" className="aspect-[5/6] w-full object-cover" width={1600} height={1920} />
-            </div>
-            <div className="absolute -left-6 bottom-8 hidden w-64 rounded-2xl border border-border bg-card/95 p-4 shadow-xl backdrop-blur md:block">
-              <div className="flex items-center gap-3">
-                <div className="grid h-10 w-10 place-items-center rounded-xl bg-primary text-primary-foreground"><ShieldCheck className="h-5 w-5" /></div>
-                <div>
-                  <div className="text-xs text-muted-foreground">Verified ecosystem</div>
-                  <div className="text-sm font-semibold">10+ trusted brands</div>
+            <div className="pointer-events-none absolute -inset-6 -z-10 rounded-[2.5rem] bg-gradient-to-br from-primary/10 via-transparent to-[color:var(--brand-red)]/10 blur-2xl" />
+            <div className="grid gap-4 sm:grid-cols-2">
+              {heroStats.map((s, i) => (
+                <div
+                  key={s.label}
+                  className={`card-elev card-elev-hover p-6 ${i % 2 === 1 ? "sm:translate-y-8" : ""}`}
+                >
+                  <div className="font-display text-4xl font-bold tracking-tight md:text-5xl" style={{ color: s.accent }}>
+                    {s.value}
+                  </div>
+                  <div className="mt-2 text-sm font-medium text-muted-foreground">{s.label}</div>
                 </div>
-              </div>
+              ))}
             </div>
-            <div className="absolute -right-4 -top-4 hidden rounded-2xl border border-border bg-card/95 p-4 shadow-xl backdrop-blur md:block">
-              <div className="text-xs uppercase tracking-wider text-muted-foreground">This year</div>
-              <div className="mt-1 font-display text-2xl font-bold text-foreground">+38% <span className="text-sm font-medium text-[color:var(--brand-green)]">growth</span></div>
+            <div className="mt-10 grid grid-cols-3 gap-3 text-center sm:mt-14">
+              {[
+                { icon: <ShieldCheck className="h-4 w-4" />, t: "Verified" },
+                { icon: <Building2 className="h-4 w-4" />, t: "Established" },
+                { icon: <Users className="h-4 w-4" />, t: "Community" },
+              ].map((b) => (
+                <div key={b.t} className="inline-flex items-center justify-center gap-2 rounded-full border border-border bg-card px-3 py-2 text-xs font-semibold text-foreground/75">
+                  <span className="text-[color:var(--brand-red)]">{b.icon}</span> {b.t}
+                </div>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* STATS */}
-      <Section className="!py-14">
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <StatCard value="14+" label="Years of experience" accent="primary" />
-          <StatCard value="200+" label="Branches across Italy" accent="sky" />
-          <StatCard value="7+" label="Provinces served" accent="green" />
-          <StatCard value="10+" label="Ecosystem brands" accent="olive" />
-        </div>
-      </Section>
-
-      {/* TRUST STRIP */}
-      <section className="border-y border-border bg-[color:var(--color-surface)]">
-        <div className="container-x flex flex-wrap items-center justify-between gap-6 py-8 text-sm text-muted-foreground">
-          {[
-            { icon: <ShieldCheck className="h-4 w-4" />, t: "14 Years Experience" },
-            { icon: <Building2 className="h-4 w-4" />, t: "200+ Branches" },
-            { icon: <Scale className="h-4 w-4" />, t: "Legal Expertise" },
-            { icon: <Users className="h-4 w-4" />, t: "Large Client Base" },
-            { icon: <Sparkles className="h-4 w-4" />, t: "Community Reputation" },
-          ].map((it) => (
-            <div key={it.t} className="inline-flex items-center gap-2 font-medium text-foreground/80">
-              <span className="text-primary">{it.icon}</span> {it.t}
-            </div>
-          ))}
         </div>
       </section>
 
@@ -154,7 +142,7 @@ function HomePage() {
           <div>
             <Eyebrow>Why CSN exists</Eyebrow>
             <h2 className="mt-3 font-display text-3xl font-bold leading-tight text-foreground md:text-5xl">
-              Living in Italy shouldn't feel like solving a puzzle.
+              Living in Italy shouldn't feel like <span className="text-[color:var(--brand-red)]">solving a puzzle.</span>
             </h2>
             <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
               Many Bangladeshi families in Italy struggle with confusing paperwork,
@@ -174,7 +162,7 @@ function HomePage() {
               { icon: <Headphones className="h-5 w-5" />, t: "No clear support", d: "Bangla-speaking help desk by phone, WhatsApp and in person." },
             ].map((c) => (
               <div key={c.t} className="card-elev card-elev-hover p-5">
-                <div className="grid h-10 w-10 place-items-center rounded-xl bg-primary-soft text-primary">{c.icon}</div>
+                <div className="grid h-10 w-10 place-items-center rounded-xl bg-primary-soft text-[color:var(--brand-red)]">{c.icon}</div>
                 <h4 className="mt-4 font-display text-base font-semibold">{c.t}</h4>
                 <p className="mt-1.5 text-sm text-muted-foreground">{c.d}</p>
               </div>
@@ -188,7 +176,7 @@ function HomePage() {
         <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <SectionHeading
             eyebrow="What we do"
-            title={<>Services built around real <span className="text-primary">community needs.</span></>}
+            title={<>Services built around real <span className="text-[color:var(--brand-red)]">community needs.</span></>}
             description="Four core services trusted by thousands of Bangladeshi families across Italy."
           />
           <CTAButton to="/services" variant="ghost">All services</CTAButton>
@@ -202,7 +190,7 @@ function HomePage() {
       <Section>
         <SectionHeading
           eyebrow="The ecosystem"
-          title={<>Three platforms. One trusted brand.</>}
+          title={<>Three platforms. <span className="text-[color:var(--brand-red)]">One trusted brand.</span></>}
           description="CAF CSN, CSN Travel and Cepron — each platform serves a specific need, all backed by the same commitment to trust."
         />
         <div className="mt-12 grid gap-5 lg:grid-cols-3">
@@ -232,13 +220,13 @@ function HomePage() {
       <Section className="bg-[color:var(--color-surface-2)]">
         <SectionHeading
           eyebrow="Voices from the community"
-          title={<>Why families trust CSN with what matters.</>}
+          title={<>Why families <span className="text-[color:var(--brand-red)]">trust CSN</span> with what matters.</>}
           align="center"
         />
         <div className="mt-12 grid gap-5 md:grid-cols-3">
           {testimonials.map((t) => (
             <figure key={t.name} className="card-elev card-elev-hover p-7">
-              <Quote className="h-7 w-7 text-primary/30" />
+              <Quote className="h-7 w-7 text-[color:var(--brand-red)]/30" />
               <blockquote className="mt-4 text-base leading-relaxed text-foreground">"{t.quote}"</blockquote>
               <figcaption className="mt-6 flex items-center gap-3 border-t border-border pt-5">
                 <div className="h-10 w-10 rounded-full bg-gradient-to-br from-primary/50 to-[color:var(--brand-sky)]/50" />
@@ -254,7 +242,7 @@ function HomePage() {
 
       {/* BRANDS */}
       <Section>
-        <SectionHeading eyebrow="The brands" title="One ecosystem, ten brands." align="center" />
+        <SectionHeading eyebrow="The brands" title={<>One ecosystem, <span className="text-[color:var(--brand-red)]">ten brands.</span></>} align="center" />
         <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
           {brands.map((b) => (
             <div key={b} className="card-elev card-elev-hover grid h-24 place-items-center text-center">
@@ -268,7 +256,7 @@ function HomePage() {
       <Section className="bg-[color:var(--color-surface)]">
         <SectionHeading
           eyebrow="Partner with us"
-          title={<>Grow with the largest Bangladeshi business network in Italy.</>}
+          title={<>Grow with the largest <span className="text-[color:var(--brand-red)]">Bangladeshi business network</span> in Italy.</>}
           description="Four ways to build your future on top of CSN's trusted infrastructure."
         />
         <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
@@ -283,13 +271,16 @@ function HomePage() {
 
       {/* CONTACT */}
       <Section>
-        <div className="card-elev relative overflow-hidden p-10 md:p-16">
-          <img src={meshImg} alt="" aria-hidden className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-25" loading="lazy" width={1600} height={900} />
+        <div className="relative overflow-hidden rounded-[2rem] border border-border p-10 md:p-16">
+          <img src={meshImg} alt="" aria-hidden className="pointer-events-none absolute inset-0 h-full w-full scale-110 object-cover" loading="lazy" width={1600} height={900} />
+          <div className="pointer-events-none absolute inset-0 backdrop-blur-2xl bg-card/70" />
+          <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[color:var(--brand-red)]/15 blur-3xl" />
+          <div className="pointer-events-none absolute -left-24 bottom-0 h-72 w-72 rounded-full bg-primary/15 blur-3xl" />
           <div className="relative grid gap-10 lg:grid-cols-2 lg:items-center">
             <div>
               <Eyebrow>Get in touch</Eyebrow>
               <h2 className="mt-3 font-display text-3xl font-bold leading-tight md:text-5xl">
-                Talk to a real person at CSN.
+                Talk to a <span className="text-[color:var(--brand-red)]">real person</span> at CSN.
               </h2>
               <p className="mt-4 max-w-md text-base text-muted-foreground md:text-lg">
                 Call, WhatsApp or visit one of our 200+ branches. We answer in Bangla, English and Italian.
@@ -306,8 +297,8 @@ function HomePage() {
                 { icon: <Briefcase className="h-5 w-5" />, t: "For business", d: "partners@csn..." },
                 { icon: <Headphones className="h-5 w-5" />, t: "Help desk", d: "Mon–Sat · 9–7" },
               ].map((c) => (
-                <div key={c.t} className="rounded-2xl border border-border bg-card p-5">
-                  <div className="grid h-10 w-10 place-items-center rounded-xl bg-primary-soft text-primary">{c.icon}</div>
+                <div key={c.t} className="rounded-2xl border border-border bg-card/80 p-5 backdrop-blur">
+                  <div className="grid h-10 w-10 place-items-center rounded-xl bg-primary-soft text-[color:var(--brand-red)]">{c.icon}</div>
                   <div className="mt-3 text-sm font-semibold">{c.t}</div>
                   <div className="text-sm text-muted-foreground">{c.d}</div>
                 </div>

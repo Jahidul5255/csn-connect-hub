@@ -1,20 +1,21 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Menu, X, ChevronDown, Phone } from "lucide-react";
+import { Menu, X, ChevronDown, Phone, Plane, Scale, GraduationCap, Languages, Building2, BookOpen } from "lucide-react";
 import { Logo } from "./Logo";
 
 const services = [
-  { to: "/travel", label: "Travel", desc: "Tickets, visas, Umrah" },
-  { to: "/legal", label: "Legal Support / CAF", desc: "Patronato, tax, immigration" },
-  { to: "/education", label: "Education", desc: "Cepron learning platform" },
-  { to: "/language", label: "Language Courses", desc: "Italian A1 to C2" },
+  { to: "/travel", label: "Travel", desc: "Tickets, visas, Umrah", icon: <Plane className="h-4 w-4" /> },
+  { to: "/legal", label: "Legal Support / CAF", desc: "Patronato, tax, immigration", icon: <Scale className="h-4 w-4" /> },
+  { to: "/education", label: "Education", desc: "Cepron learning platform", icon: <GraduationCap className="h-4 w-4" /> },
+  { to: "/language", label: "Language Courses", desc: "Italian A1 to C2", icon: <Languages className="h-4 w-4" /> },
 ];
 
 const platforms = [
-  { to: "/platforms", label: "CSN Travel", desc: "Travel marketplace" },
-  { to: "/platforms", label: "CAF CSN", desc: "Branch & franchise network" },
-  { to: "/platforms", label: "Cepron", desc: "Learning ecosystem" },
+  { to: "/platforms", label: "CSN Travel", desc: "Travel marketplace", icon: <Plane className="h-4 w-4" /> },
+  { to: "/platforms", label: "CAF CSN", desc: "Branch & franchise network", icon: <Building2 className="h-4 w-4" /> },
+  { to: "/platforms", label: "Cepron", desc: "Learning ecosystem", icon: <BookOpen className="h-4 w-4" /> },
 ];
+
 
 const navItems = [
   { to: "/", label: "Home" },
@@ -91,8 +92,8 @@ export function SiteHeader() {
                   {item.mega && <ChevronDown className="h-3.5 w-3.5 opacity-60" />}
                 </Link>
                 {item.mega && openMega === item.label && (
-                  <div className="absolute left-1/2 top-full w-[420px] -translate-x-1/2 pt-2">
-                    <div className="card-elev p-3">
+                  <div className="absolute left-1/2 top-full w-[440px] -translate-x-1/2 pt-2">
+                    <div className="card-elev p-3 shadow-[0_20px_50px_-20px_rgba(15,35,60,0.18)]">
                       <div className="grid grid-cols-1 gap-1">
                         {item.mega.map((m) => (
                           <Link
@@ -100,7 +101,9 @@ export function SiteHeader() {
                             to={m.to}
                             className="group flex items-start gap-3 rounded-xl px-3 py-2.5 transition hover:bg-secondary"
                           >
-                            <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary" />
+                            <span className="grid h-9 w-9 flex-none place-items-center rounded-lg bg-primary-soft text-[color:var(--brand-red)] transition group-hover:bg-[color:var(--brand-red)] group-hover:text-white">
+                              {m.icon}
+                            </span>
                             <span>
                               <span className="block text-sm font-semibold text-foreground">{m.label}</span>
                               <span className="block text-xs text-muted-foreground">{m.desc}</span>
@@ -111,6 +114,7 @@ export function SiteHeader() {
                     </div>
                   </div>
                 )}
+
               </div>
             ))}
           </nav>
