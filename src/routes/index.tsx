@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   Plane, Scale, GraduationCap, Languages, ShieldCheck, Building2,
-  Users, Globe2, Sparkles, Star, Quote, Briefcase, BookOpen, MapPin, Headphones,
+  Users, Globe2, Sparkles, Star, Quote, Briefcase, BookOpen, MapPin, Headphones, ArrowUpRight,
 } from "lucide-react";
 import { Section, SectionHeading, CTAButton, StatCard, FeatureCard, Eyebrow } from "@/components/site/Primitives";
 import heroImg from "@/assets/hero-community.jpg";
