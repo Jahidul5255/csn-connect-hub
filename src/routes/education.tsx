@@ -20,7 +20,7 @@ function EducationPage() {
     <>
       <PageHero
         eyebrow="Cepron"
-        title={<>Learn skills that <span className="text-primary">change your life.</span></>}
+        title={<>Learn skills that <span className="text-[color:var(--brand-red)]">change your life.</span></>}
         description="Cepron is CSN's learning platform — practical courses, real certifications, designed for the Bangladeshi community in Italy."
       >
         <CTAButton to="/contact">Start learning</CTAButton>

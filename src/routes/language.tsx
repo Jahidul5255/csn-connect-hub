@@ -24,7 +24,7 @@ function LanguagePage() {
     <>
       <PageHero
         eyebrow="Italian Language Courses"
-        title={<>Speak Italian like <span className="text-primary">you mean it.</span></>}
+        title={<>Speak Italian like <span className="text-[color:var(--brand-red)]">you mean it.</span></>}
         description="Structured courses from A1 to C2, plus targeted citizenship exam preparation. Taught by certified, community-aware instructors."
       >
         <CTAButton to="/contact">Enrol now</CTAButton>

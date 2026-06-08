@@ -31,7 +31,7 @@ function LegalPage() {
     <>
       <PageHero
         eyebrow="CAF CSN — Legal Support"
-        title={<>Documents handled. <span className="text-primary">Worries lifted.</span></>}
+        title={<>Documents handled. <span className="text-[color:var(--brand-red)]">Worries lifted.</span></>}
         description="Certified CAF and Patronato services across 200+ branches in Italy. Bangla-speaking consultants, real offices, transparent fees."
       >
         <CTAButton to="/contact">Book a consultation</CTAButton>

@@ -35,7 +35,7 @@ function ContactPage() {
     <>
       <PageHero
         eyebrow="Contact"
-        title={<>Get in <span className="text-primary">touch.</span></>}
+        title={<>Get in <span className="text-[color:var(--brand-red)]">touch.</span></>}
         description="Choose the channel that works for you. A real person, in your language, will answer."
       />
 

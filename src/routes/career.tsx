@@ -38,7 +38,7 @@ function CareerPage() {
     <>
       <PageHero
         eyebrow="Careers"
-        title={<>Join our <span className="text-primary">team.</span></>}
+        title={<>Join our <span className="text-[color:var(--brand-red)]">team.</span></>}
         description="We're hiring across Italy and Bangladesh — for people who want to do meaningful work for a real community."
       >
         <CTAButton to="#openings">See open roles</CTAButton>
