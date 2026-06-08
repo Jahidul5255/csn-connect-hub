@@ -22,11 +22,12 @@ const opportunities = [
 ];
 
 const reasons = [
-  { icon: <ShieldCheck className="h-5 w-5" />, title: "Established brand", description: "14 years and a recognised name in the community." },
-  { icon: <Rocket className="h-5 w-5" />, title: "Proven model", description: "Replicable systems across 200+ branches." },
-  { icon: <Headphones className="h-5 w-5" />, title: "Training & support", description: "Hands-on onboarding, ongoing operations help." },
-  { icon: <Users className="h-5 w-5" />, title: "Network access", description: "Plug into the largest community network." },
-  { icon: <TrendingUp className="h-5 w-5" />, title: "Growth potential", description: "Underserved markets across Italy and Europe." },
+  { icon: <TrendingUp className="h-5 w-5" />, title: "Scalable Income Potential", description: "Build a business with unlimited growth potential backed by proven systems and expanding market demand." },
+  { icon: <Globe2 className="h-5 w-5" />, title: "International Network", description: "Leverage our established connections across Italy and internationally to grow your business reach." },
+  { icon: <Headphones className="h-5 w-5" />, title: "Full Support System", description: "Receive comprehensive training, ongoing support, and access to resources that ensure your success." },
+  { icon: <ShieldCheck className="h-5 w-5" />, title: "Established Brand Recognition", description: "Benefit from our reputation and brand trust built over years of serving clients across Italy." },
+  { icon: <Rocket className="h-5 w-5" />, title: "Proven Systems", description: "Work with tested operational models, software, and processes that drive efficiency and results." },
+  { icon: <Users className="h-5 w-5" />, title: "Community of Partners", description: "Join a network of successful partners who share knowledge, best practices, and support each other." },
 ];
 
 const steps = [
