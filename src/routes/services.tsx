@@ -77,7 +77,7 @@ function ServicesPage() {
     <>
       <PageHero
         eyebrow="Services"
-        title={<>Everything you need to <span className="text-primary">thrive in Italy.</span></>}
+        title={<>Everything you need to <span className="text-[color:var(--brand-red)]">thrive in Italy.</span></>}
         description="Five service families, one trusted brand. Walk into a branch, call our help desk or start online."
       >
         <CTAButton to="/contact">Talk to an advisor</CTAButton>

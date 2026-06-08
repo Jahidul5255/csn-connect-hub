@@ -40,7 +40,7 @@ function TravelPage() {
     <>
       <PageHero
         eyebrow="CSN Travel"
-        title={<>Travel that feels <span className="text-primary">looked after.</span></>}
+        title={<>Travel that feels <span className="text-[color:var(--brand-red)]">looked after.</span></>}
         description="Tickets, hotels, visas and Umrah — handled by people who know your route and your community."
       >
         <CTAButton to="/contact">Plan your trip</CTAButton>

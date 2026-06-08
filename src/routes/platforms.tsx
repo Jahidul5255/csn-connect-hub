@@ -51,7 +51,7 @@ function PlatformsPage() {
     <>
       <PageHero
         eyebrow="The ecosystem"
-        title={<>Three platforms. <span className="text-primary">One trusted brand.</span></>}
+        title={<>Three platforms. <span className="text-[color:var(--brand-red)]">One trusted brand.</span></>}
         description="Each platform serves a clear purpose — together they cover everything a Bangladeshi family or business in Italy needs."
       />
 

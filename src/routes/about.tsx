@@ -21,7 +21,7 @@ function AboutPage() {
     <>
       <PageHero
         eyebrow="About CSN Bangladesh"
-        title={<>Building trust, <span className="text-primary">one family at a time.</span></>}
+        title={<>Building trust, <span className="text-[color:var(--brand-red)]">one family at a time.</span></>}
         description="For over 14 years, CSN has stood beside Bangladeshi families in Italy — helping with legal paperwork, education, travel and entrepreneurship under one trusted name."
       >
         <CTAButton to="/contact">Visit a branch</CTAButton>
