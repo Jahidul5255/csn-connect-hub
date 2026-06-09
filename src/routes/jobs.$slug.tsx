@@ -324,18 +324,3 @@ function Meta({ icon, label, value }: { icon: React.ReactNode; label: string; va
   );
 }
 
-function Field({ label, type = "text", required }: { label: string; type?: string; required?: boolean }) {
-  return (
-    <label className="block text-sm">
-      <span className="mb-1.5 block font-medium text-foreground">
-        {label}
-        {required && <span className="text-[color:var(--brand-red)]">*</span>}
-      </span>
-      <input
-        type={type}
-        required={required}
-        className="w-full rounded-xl border border-input bg-background px-3.5 py-2.5 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/15"
-      />
-    </label>
-  );
-}
