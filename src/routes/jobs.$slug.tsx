@@ -1,5 +1,4 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { useState } from "react";
 import { PageHero, Section, CTAButton, Eyebrow } from "@/components/site/Primitives";
 import { MapPin, Briefcase, Clock, DollarSign, CheckCircle2, ArrowLeft, Users } from "lucide-react";
 
@@ -225,7 +224,6 @@ export const Route = createFileRoute("/jobs/$slug")({
 
 function JobPage() {
   const { job } = Route.useLoaderData();
-  const [submitted, setSubmitted] = useState(false);
 
   return (
     <>
@@ -234,7 +232,6 @@ function JobPage() {
         title={<>{job.title.split(" ").slice(0, -1).join(" ")} <span className="text-[color:var(--brand-red)]">{job.title.split(" ").slice(-1)}</span></>}
         description={job.summary}
       >
-        <CTAButton to="#apply">Apply for this role</CTAButton>
         <CTAButton to="/career" variant="secondary">All open roles</CTAButton>
       </PageHero>
 
@@ -283,56 +280,8 @@ function JobPage() {
               <Meta icon={<Clock className="h-4 w-4" />} label="Type" value={job.type} />
               <Meta icon={<DollarSign className="h-4 w-4" />} label="Compensation" value={job.salary} />
               <Meta icon={<Users className="h-4 w-4" />} label="Status" value={job.posted} />
-              <CTAButton to="#apply">Apply now</CTAButton>
             </div>
           </aside>
-        </div>
-      </Section>
-
-      <Section id="apply" className="bg-[color:var(--color-surface-2)]">
-        <div className="grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:items-start">
-          <div>
-            <Eyebrow>Apply</Eyebrow>
-            <h2 className="mt-3 font-display text-3xl font-bold leading-tight md:text-5xl">
-              Apply for <span className="text-[color:var(--brand-red)]">{job.title}</span>
-            </h2>
-            <p className="mt-4 text-base text-muted-foreground md:text-lg">
-              Tell us a bit about yourself — we read every application and reply within 7 days.
-            </p>
-          </div>
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              setSubmitted(true);
-            }}
-            className="card-elev space-y-4 p-8"
-          >
-            {submitted ? (
-              <div className="rounded-2xl border border-[color:var(--brand-green)]/30 bg-[color:var(--brand-green)]/10 p-6 text-sm">
-                Thanks — your application for <strong>{job.title}</strong> is in. We'll be in touch shortly.
-              </div>
-            ) : (
-              <>
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <Field label="Full name" required />
-                  <Field label="Email" type="email" required />
-                  <Field label="Phone" type="tel" />
-                  <Field label="Years of experience" />
-                </div>
-                <Field label="LinkedIn / Portfolio URL" type="url" />
-                <label className="block text-sm">
-                  <span className="mb-1.5 block font-medium">Why this role?</span>
-                  <textarea
-                    rows={4}
-                    className="w-full rounded-xl border border-input bg-background px-3.5 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/15"
-                  />
-                </label>
-                <button className="inline-flex w-full items-center justify-center rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground hover:opacity-90">
-                  Submit application
-                </button>
-              </>
-            )}
-          </form>
         </div>
       </Section>
     </>
