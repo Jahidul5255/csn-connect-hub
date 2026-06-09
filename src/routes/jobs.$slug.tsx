@@ -272,13 +272,15 @@ function JobPage() {
 
           <aside className="lg:sticky lg:top-24 lg:self-start">
             <div className="card-elev space-y-5 p-6">
-              <Eyebrow className="pb-2">Role details</Eyebrow>
+              <div className="pb-2">
+                <Eyebrow>Role details</Eyebrow>
+              </div>
               <Meta icon={<Briefcase className="h-4 w-4" />} label="Department" value={job.dept} />
               <Meta icon={<MapPin className="h-4 w-4" />} label="Location" value={job.location} />
               <Meta icon={<Clock className="h-4 w-4" />} label="Type" value={job.type} />
               <Meta icon={<DollarSign className="h-4 w-4" />} label="Compensation" value={job.salary} />
               <Meta icon={<Users className="h-4 w-4" />} label="Status" value={job.posted} />
-              <CTAButton to="mailto:careers@csnbangladesh.it?subject=Application for ${encodeURIComponent(job.title)}">Apply Now</CTAButton>
+              <CTAButton href={`mailto:careers@csnbangladesh.it?subject=Application for ${encodeURIComponent(job.title)}`}>Apply Now</CTAButton>
             </div>
           </aside>
         </div>
