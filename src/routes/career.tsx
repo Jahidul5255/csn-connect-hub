@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { PageHero, Section, SectionHeading, FeatureCard, CTAButton, Eyebrow } from "@/components/site/Primitives";
 import { TrendingUp, Globe2, Sparkles, Users, MapPin, Briefcase, ArrowRight } from "lucide-react";
 
