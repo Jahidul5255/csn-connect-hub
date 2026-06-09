@@ -231,9 +231,7 @@ function JobPage() {
         eyebrow={`Careers · ${job.dept}`}
         title={<>{job.title.split(" ").slice(0, -1).join(" ")} <span className="text-[color:var(--brand-red)]">{job.title.split(" ").slice(-1)}</span></>}
         description={job.summary}
-      >
-        <CTAButton to="/career" variant="secondary">All open roles</CTAButton>
-      </PageHero>
+      />
 
       <Section>
         <div className="grid gap-12 lg:grid-cols-[1.6fr_1fr]">
@@ -274,12 +272,13 @@ function JobPage() {
 
           <aside className="lg:sticky lg:top-24 lg:self-start">
             <div className="card-elev space-y-5 p-6">
-              <Eyebrow>Role details</Eyebrow>
+              <Eyebrow className="pb-2">Role details</Eyebrow>
               <Meta icon={<Briefcase className="h-4 w-4" />} label="Department" value={job.dept} />
               <Meta icon={<MapPin className="h-4 w-4" />} label="Location" value={job.location} />
               <Meta icon={<Clock className="h-4 w-4" />} label="Type" value={job.type} />
               <Meta icon={<DollarSign className="h-4 w-4" />} label="Compensation" value={job.salary} />
               <Meta icon={<Users className="h-4 w-4" />} label="Status" value={job.posted} />
+              <CTAButton to="mailto:careers@csnbangladesh.it?subject=Application for ${encodeURIComponent(job.title)}">Apply Now</CTAButton>
             </div>
           </aside>
         </div>
