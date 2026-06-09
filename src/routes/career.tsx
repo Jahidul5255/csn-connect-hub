@@ -68,9 +68,13 @@ function CareerPage() {
                   <span>· {j.type}</span>
                 </div>
               </div>
-              <button className="inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:opacity-90">
-                Apply <ArrowRight className="h-4 w-4" />
-              </button>
+              <Link
+                to="/jobs/$slug"
+                params={{ slug: j.slug }}
+                className="inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:opacity-90"
+              >
+                View & apply <ArrowRight className="h-4 w-4" />
+              </Link>
             </div>
           ))}
         </div>
