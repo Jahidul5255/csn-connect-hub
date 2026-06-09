@@ -23,12 +23,12 @@ const benefits = [
 ];
 
 const jobs = [
-  { title: "Senior CAF Consultant", location: "Rome, Italy", type: "Full-time", dept: "Legal" },
-  { title: "Travel Operations Lead", location: "Milan, Italy", type: "Full-time", dept: "Travel" },
-  { title: "Italian Language Instructor", location: "Bologna, Italy", type: "Part-time", dept: "Education" },
-  { title: "Frontend Engineer", location: "Dhaka, Bangladesh", type: "Full-time", dept: "Technology" },
-  { title: "Branch Manager", location: "Naples, Italy", type: "Full-time", dept: "Operations" },
-  { title: "Community Support Agent", location: "Remote · Italy", type: "Full-time", dept: "Support" },
+  { slug: "senior-caf-consultant", title: "Senior CAF Consultant", location: "Rome, Italy", type: "Full-time", dept: "Legal" },
+  { slug: "travel-operations-lead", title: "Travel Operations Lead", location: "Milan, Italy", type: "Full-time", dept: "Travel" },
+  { slug: "italian-language-instructor", title: "Italian Language Instructor", location: "Bologna, Italy", type: "Part-time", dept: "Education" },
+  { slug: "frontend-engineer", title: "Frontend Engineer", location: "Dhaka, Bangladesh", type: "Full-time", dept: "Technology" },
+  { slug: "branch-manager", title: "Branch Manager", location: "Naples, Italy", type: "Full-time", dept: "Operations" },
+  { slug: "community-support-agent", title: "Community Support Agent", location: "Remote · Italy", type: "Full-time", dept: "Support" },
 ];
 
 const steps = ["Apply", "Screening", "Interview", "Offer", "Onboarding"];
