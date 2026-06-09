@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { PageHero, Section, SectionHeading, FeatureCard, CTAButton, Eyebrow } from "@/components/site/Primitives";
 import { TrendingUp, Globe2, Sparkles, Users, MapPin, Briefcase, ArrowRight } from "lucide-react";
 
@@ -22,12 +23,12 @@ const benefits = [
 ];
 
 const jobs = [
-  { title: "Senior CAF Consultant", location: "Rome, Italy", type: "Full-time", dept: "Legal" },
-  { title: "Travel Operations Lead", location: "Milan, Italy", type: "Full-time", dept: "Travel" },
-  { title: "Italian Language Instructor", location: "Bologna, Italy", type: "Part-time", dept: "Education" },
-  { title: "Frontend Engineer", location: "Dhaka, Bangladesh", type: "Full-time", dept: "Technology" },
-  { title: "Branch Manager", location: "Naples, Italy", type: "Full-time", dept: "Operations" },
-  { title: "Community Support Agent", location: "Remote · Italy", type: "Full-time", dept: "Support" },
+  { slug: "senior-caf-consultant", title: "Senior CAF Consultant", location: "Rome, Italy", type: "Full-time", dept: "Legal" },
+  { slug: "travel-operations-lead", title: "Travel Operations Lead", location: "Milan, Italy", type: "Full-time", dept: "Travel" },
+  { slug: "italian-language-instructor", title: "Italian Language Instructor", location: "Bologna, Italy", type: "Part-time", dept: "Education" },
+  { slug: "frontend-engineer", title: "Frontend Engineer", location: "Dhaka, Bangladesh", type: "Full-time", dept: "Technology" },
+  { slug: "branch-manager", title: "Branch Manager", location: "Naples, Italy", type: "Full-time", dept: "Operations" },
+  { slug: "community-support-agent", title: "Community Support Agent", location: "Remote · Italy", type: "Full-time", dept: "Support" },
 ];
 
 const steps = ["Apply", "Screening", "Interview", "Offer", "Onboarding"];
@@ -67,9 +68,13 @@ function CareerPage() {
                   <span>· {j.type}</span>
                 </div>
               </div>
-              <button className="inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:opacity-90">
-                Apply <ArrowRight className="h-4 w-4" />
-              </button>
+              <Link
+                to="/jobs/$slug"
+                params={{ slug: j.slug }}
+                className="inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:opacity-90"
+              >
+                View & apply <ArrowRight className="h-4 w-4" />
+              </Link>
             </div>
           ))}
         </div>
