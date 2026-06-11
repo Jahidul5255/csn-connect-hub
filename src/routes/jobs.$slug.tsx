@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PageHero, Section, CTAButton, Eyebrow } from "@/components/site/Primitives";
-import { MapPin, Briefcase, Clock, DollarSign, CheckCircle2, ArrowLeft, Users } from "lucide-react";
+import { MapPin, Briefcase, Clock, DollarSign, ArrowLeft, Users } from "lucide-react";
 
 type Job = {
   slug: string;
