@@ -2,6 +2,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Section, PageHero, SectionHeading, StatCard, FeatureCard, CTAButton, Eyebrow } from "@/components/site/Primitives";
 import { ShieldCheck, Heart, Compass, Users, Target, Eye, MapPin } from "lucide-react";
 import heroImg from "@/assets/hero-community.jpg";
+import team1 from "@/assets/team-1.jpg";
+import team2 from "@/assets/team-2.jpg";
+import team3 from "@/assets/team-3.jpg";
+import team4 from "@/assets/team-4.jpg";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
