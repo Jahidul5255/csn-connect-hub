@@ -49,7 +49,7 @@ function TravelPage() {
 
       <Section>
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-          <img src={travelImg} alt="" className="aspect-[4/3] w-full rounded-3xl border border-border object-cover shadow-xl" loading="lazy" width={1400} height={1000} />
+          <img src={travelImg} alt="" className="aspect-[4/3] w-full rounded-3xl border border-border object-cover" loading="lazy" width={1400} height={1000} />
           <div>
             <p className="eyebrow">What we offer</p>
             <h2 className="mt-3 font-display text-3xl font-bold leading-tight md:text-5xl">

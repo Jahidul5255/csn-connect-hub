@@ -2,6 +2,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Section, PageHero, SectionHeading, StatCard, FeatureCard, CTAButton, Eyebrow } from "@/components/site/Primitives";
 import { ShieldCheck, Heart, Compass, Users, Target, Eye, MapPin } from "lucide-react";
 import heroImg from "@/assets/hero-community.jpg";
+import team1 from "@/assets/team-1.jpg";
+import team2 from "@/assets/team-2.jpg";
+import team3 from "@/assets/team-3.jpg";
+import team4 from "@/assets/team-4.jpg";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -30,7 +34,7 @@ function AboutPage() {
 
       <Section>
         <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-center">
-          <img src={heroImg} alt="CSN community" className="rounded-3xl border border-border object-cover shadow-xl" width={1400} height={1600} loading="lazy" />
+          <img src={heroImg} alt="CSN community" className="rounded-3xl border border-border object-cover" width={1400} height={1600} loading="lazy" />
           <div>
             <Eyebrow>Who we are</Eyebrow>
             <h2 className="mt-3 font-display text-3xl font-bold leading-tight md:text-5xl">
@@ -99,6 +103,38 @@ function AboutPage() {
           ].map((c) => <FeatureCard key={c.title} {...c} />)}
         </div>
       </Section>
+
+      <Section>
+        <SectionHeading
+          eyebrow="Our team"
+          title={<>The people behind <span className="text-[color:var(--brand-red)]">CSN.</span></>}
+          description="A close-knit leadership team that has grown alongside the community we serve."
+        />
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            { photo: team1, name: "Mohammad Rahman", role: "Founder & CEO" },
+            { photo: team2, name: "Nasrin Akter", role: "Head of Operations" },
+            { photo: team3, name: "Tanvir Hasan", role: "Director, Travel" },
+            { photo: team4, name: "Shabnam Chowdhury", role: "Director, Education" },
+          ].map((m) => (
+            <div key={m.name} className="card-elev card-elev-hover overflow-hidden">
+              <img
+                src={m.photo}
+                alt={m.name}
+                width={1024}
+                height={1024}
+                loading="lazy"
+                className="aspect-square w-full object-cover"
+              />
+              <div className="p-5">
+                <h3 className="font-display text-lg font-semibold text-foreground">{m.name}</h3>
+                <p className="mt-1 text-sm text-muted-foreground">{m.role}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Section>
+
 
       <Section>
         <div className="card-elev p-10 text-center md:p-16">

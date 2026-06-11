@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PageHero, Section, CTAButton, Eyebrow } from "@/components/site/Primitives";
-import { MapPin, Briefcase, Clock, DollarSign, CheckCircle2, ArrowLeft, Users } from "lucide-react";
+import { MapPin, Briefcase, Clock, DollarSign, ArrowLeft, Users } from "lucide-react";
 
 type Job = {
   slug: string;
@@ -270,7 +270,7 @@ function JobPage() {
             </div>
           </div>
 
-          <aside className="lg:sticky lg:top-24 lg:self-start">
+          <aside className="lg:sticky lg:top-32 lg:self-start">
             <div className="card-elev space-y-5 p-6">
               <div className="pb-2">
                 <Eyebrow>Role details</Eyebrow>
@@ -303,7 +303,7 @@ function List({ items }: { items: string[] }) {
     <ul className="space-y-3">
       {items.map((it) => (
         <li key={it} className="flex gap-3 text-base text-muted-foreground">
-          <CheckCircle2 className="mt-0.5 h-5 w-5 flex-none text-[color:var(--brand-red)]" />
+          <span aria-hidden className="mt-0 flex-none text-lg leading-6 text-[color:var(--brand-red)]">•</span>
           <span>{it}</span>
         </li>
       ))}

@@ -44,7 +44,7 @@ function EducationPage() {
               <StatCard value="8K+" label="Learners" accent="green" />
             </div>
           </div>
-          <img src={eduImg} alt="" className="aspect-[4/3] w-full rounded-3xl border border-border object-cover shadow-xl" loading="lazy" width={1400} height={1000} />
+          <img src={eduImg} alt="" className="aspect-[4/3] w-full rounded-3xl border border-border object-cover" loading="lazy" width={1400} height={1000} />
         </div>
       </Section>
 
