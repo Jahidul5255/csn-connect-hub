@@ -303,7 +303,7 @@ function List({ items }: { items: string[] }) {
     <ul className="space-y-3">
       {items.map((it) => (
         <li key={it} className="flex gap-3 text-base text-muted-foreground">
-          <CheckCircle2 className="mt-0.5 h-5 w-5 flex-none text-[color:var(--brand-red)]" />
+          <span aria-hidden className="mt-0 flex-none text-lg leading-6 text-[color:var(--brand-red)]">•</span>
           <span>{it}</span>
         </li>
       ))}
