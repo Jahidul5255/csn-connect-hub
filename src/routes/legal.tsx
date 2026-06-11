@@ -40,7 +40,7 @@ function LegalPage() {
 
       <Section>
         <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-center">
-          <img src={legalImg} alt="" className="aspect-[4/3] w-full rounded-3xl border border-border object-cover shadow-xl" loading="lazy" width={1400} height={1000} />
+          <img src={legalImg} alt="" className="aspect-[4/3] w-full rounded-3xl border border-border object-cover" loading="lazy" width={1400} height={1000} />
           <div>
             <Eyebrow>Trusted partner</Eyebrow>
             <h2 className="mt-3 font-display text-3xl font-bold leading-tight md:text-5xl">

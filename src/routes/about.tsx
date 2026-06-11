@@ -30,7 +30,7 @@ function AboutPage() {
 
       <Section>
         <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-center">
-          <img src={heroImg} alt="CSN community" className="rounded-3xl border border-border object-cover shadow-xl" width={1400} height={1600} loading="lazy" />
+          <img src={heroImg} alt="CSN community" className="rounded-3xl border border-border object-cover" width={1400} height={1600} loading="lazy" />
           <div>
             <Eyebrow>Who we are</Eyebrow>
             <h2 className="mt-3 font-display text-3xl font-bold leading-tight md:text-5xl">
