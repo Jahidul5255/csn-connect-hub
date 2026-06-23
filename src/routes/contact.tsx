@@ -41,10 +41,10 @@ function ContactPage() {
       />
 
       <Section>
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {channels.map((c) => (
             <a key={c.t} href={c.href} className="card-elev card-elev-hover block p-6">
-              <div className="grid h-11 w-11 place-items-center rounded-xl text-white" style={{ background: c.color }}>{c.icon}</div>
+              <div className="grid h-11 w-11 place-items-center rounded-full text-white" style={{ background: c.color }}>{c.icon}</div>
               <div className="mt-4 text-xs uppercase tracking-wider text-muted-foreground">{c.t}</div>
               <div className="mt-1 font-display text-base font-semibold">{c.v}</div>
             </a>
@@ -53,10 +53,8 @@ function ContactPage() {
       </Section>
 
       <Section className="bg-[color:var(--color-surface)]">
-        <div className="grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:items-start">
+        <div className="grid gap-8 lg:grid-cols-2 lg:items-start">
           <form onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }} className="card-elev space-y-4 p-8">
-            <Eyebrow>Send a message</Eyebrow>
-            <h2 className="font-display text-2xl font-bold md:text-3xl">We'd love to hear from you.</h2>
             {submitted ? (
               <div className="rounded-2xl border border-[color:var(--brand-green)]/30 bg-[color:var(--brand-green)]/10 p-6 text-sm">
                 Thanks — your message is received. We'll reply within one business day.
@@ -65,16 +63,16 @@ function ContactPage() {
               <>
                 <div className="grid gap-4 sm:grid-cols-2">
                   <Field label="Full name" required />
-                  <Field label="Phone" type="tel" required />
                   <Field label="Email" type="email" required />
-                  <SelectField label="Service interest" options={["CAF / Legal", "Travel", "Education", "Language", "Business"]} />
+                  <Field label="Phone" type="tel" required />
+                  <SelectField label="Service interest" options={["CAF / Legal", "Travel", "Education", "Language", "Business"]} required />
                 </div>
                 <label className="block text-sm">
                   <span className="mb-1.5 block font-medium">Message</span>
                   <textarea rows={5} className="w-full rounded-xl border border-input bg-background px-3.5 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/15" />
                 </label>
                 <button className="inline-flex w-full items-center justify-center rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground hover:opacity-90">
-                  Send message
+                  Send Message
                 </button>
               </>
             )}
@@ -85,22 +83,29 @@ function ContactPage() {
               <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-primary"><MapPin className="h-3.5 w-3.5" /> Italy office</div>
               <h3 className="mt-2 font-display text-lg font-semibold">CSN Italy HQ</h3>
               <p className="mt-1 text-sm text-muted-foreground">Via Roma 123, 00100 Rome, Italy</p>
-              <p className="mt-1 text-sm text-muted-foreground">+39 000 000 0000 · italy@csnbangladesh.com</p>
+              <p className="mt-1 text-sm text-muted-foreground">italy@csnbangladesh.com</p>
+              <p className="mt-1 text-sm text-muted-foreground">+39 000 000 0000</p>
             </div>
             <div className="card-elev p-6">
               <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[color:var(--brand-red)]"><MapPin className="h-3.5 w-3.5" /> Bangladesh office</div>
               <h3 className="mt-2 font-display text-lg font-semibold">CSN Bangladesh HQ</h3>
               <p className="mt-1 text-sm text-muted-foreground">House 12, Road 5, Banani, Dhaka 1213</p>
-              <p className="mt-1 text-sm text-muted-foreground">+880 1700 000000 · dhaka@csnbangladesh.com</p>
-            </div>
-            <div className="card-elev overflow-hidden">
-              <div className="aspect-[5/4] w-full bg-gradient-to-br from-primary/20 via-[color:var(--brand-sky)]/15 to-[color:var(--brand-olive)]/20">
-                <div className="grid h-full place-items-center text-sm text-foreground/60">
-                  Interactive map · Italy & Bangladesh offices
-                </div>
-              </div>
+              <p className="mt-1 text-sm text-muted-foreground">dhaka@csnbangladesh.com</p>
+              <p className="mt-1 text-sm text-muted-foreground">+880 1700 000000</p>
             </div>
           </div>
+        </div>
+      </Section>
+
+      <Section>
+        <div className="overflow-hidden rounded-2xl border border-border">
+          <iframe
+            title="CSN offices map"
+            src="https://www.google.com/maps?q=Banani,Dhaka,Bangladesh&output=embed"
+            className="h-[420px] w-full"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
         </div>
       </Section>
 
