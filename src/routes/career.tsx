@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { PageHero, Section, SectionHeading, FeatureCard, CTAButton, Eyebrow } from "@/components/site/Primitives";
-import { TrendingUp, Globe2, Sparkles, Users, MapPin, Briefcase, ArrowRight } from "lucide-react";
+import { TrendingUp, Globe2, Sparkles, Users, MapPin, Briefcase, ArrowRight, Upload, FileText, X } from "lucide-react";
 
 export const Route = createFileRoute("/career")({
   head: () => ({
@@ -35,6 +35,23 @@ const steps = ["Apply", "Screening", "Interview", "Offer", "Onboarding"];
 
 function CareerPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [resume, setResume] = useState<File | null>(null);
+  const [resumeError, setResumeError] = useState<string | null>(null);
+
+  const handleResume = (file: File | null) => {
+    setResumeError(null);
+    if (!file) { setResume(null); return; }
+    const allowed = ["application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"];
+    if (!allowed.includes(file.type) && !/\.(pdf|docx?|rtf)$/i.test(file.name)) {
+      setResumeError("Please upload a PDF, DOC, or DOCX file.");
+      return;
+    }
+    if (file.size > 5 * 1024 * 1024) {
+      setResumeError("File must be under 5MB.");
+      return;
+    }
+    setResume(file);
+  };
   return (
     <>
       <PageHero
@@ -115,6 +132,41 @@ function CareerPage() {
                   <Field label="Role of interest" />
                 </div>
                 <Field label="LinkedIn / Portfolio URL" type="url" />
+                <div className="block text-sm">
+                  <span className="mb-1.5 block font-medium text-foreground">Resume / CV<span className="text-[color:var(--brand-red)]">*</span></span>
+                  {resume ? (
+                    <div className="flex items-center justify-between gap-3 rounded-xl border border-input bg-background px-3.5 py-2.5">
+                      <div className="flex min-w-0 items-center gap-2.5">
+                        <FileText className="h-4 w-4 shrink-0 text-primary" />
+                        <div className="min-w-0">
+                          <div className="truncate text-sm font-medium">{resume.name}</div>
+                          <div className="text-xs text-muted-foreground">{(resume.size / 1024).toFixed(1)} KB</div>
+                        </div>
+                      </div>
+                      <button type="button" onClick={() => setResume(null)} aria-label="Remove file" className="rounded-full p-1.5 text-muted-foreground hover:bg-muted hover:text-foreground">
+                        <X className="h-4 w-4" />
+                      </button>
+                    </div>
+                  ) : (
+                    <label
+                      onDragOver={(e) => e.preventDefault()}
+                      onDrop={(e) => { e.preventDefault(); handleResume(e.dataTransfer.files?.[0] ?? null); }}
+                      className="flex cursor-pointer flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-input bg-background px-4 py-6 text-center transition hover:border-primary hover:bg-primary/5"
+                    >
+                      <Upload className="h-5 w-5 text-primary" />
+                      <div className="text-sm font-medium">Click to upload or drag and drop</div>
+                      <div className="text-xs text-muted-foreground">PDF, DOC, DOCX — max 5MB</div>
+                      <input
+                        type="file"
+                        accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                        required
+                        className="sr-only"
+                        onChange={(e) => handleResume(e.target.files?.[0] ?? null)}
+                      />
+                    </label>
+                  )}
+                  {resumeError && <p className="mt-1.5 text-xs text-[color:var(--brand-red)]">{resumeError}</p>}
+                </div>
                 <label className="block text-sm">
                   <span className="mb-1.5 block font-medium">Cover note</span>
                   <textarea rows={4} className="w-full rounded-xl border border-input bg-background px-3.5 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/15" />
