@@ -17,8 +17,9 @@ export const Route = createFileRoute("/contact")({
 const channels = [
   { icon: <Phone className="h-5 w-5" />, t: "Call us", v: "+39 000 000 0000", href: "tel:+390000000000", color: "var(--color-primary)" },
   { icon: <MessageCircle className="h-5 w-5" />, t: "WhatsApp", v: "+39 000 000 0000", href: "https://wa.me/390000000000", color: "var(--brand-green)" },
-  { icon: <Facebook className="h-5 w-5" />, t: "Facebook", v: "@csnbangladesh", href: "#", color: "var(--brand-sky)" },
   { icon: <Mail className="h-5 w-5" />, t: "Email", v: "info@csnbangladesh.com", href: "mailto:info@csnbangladesh.com", color: "var(--brand-red)" },
+  { icon: <Facebook className="h-5 w-5" />, t: "Facebook", v: "@csnbangladesh", href: "#", color: "var(--color-primary)" },
+  { icon: <Linkedin className="h-5 w-5" />, t: "LinkedIn", v: "@csnbangladesh", href: "#", color: "var(--brand-sky)" },
 ];
 
 const faqs = [
