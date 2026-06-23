@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { PageHero, Section, SectionHeading, Eyebrow } from "@/components/site/Primitives";
-import { Phone, MessageCircle, Facebook, Mail, MapPin, ChevronDown } from "lucide-react";
+import { Phone, MessageCircle, Facebook, Mail, MapPin, ChevronDown, Linkedin } from "lucide-react";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
