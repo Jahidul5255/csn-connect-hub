@@ -35,6 +35,23 @@ const steps = ["Apply", "Screening", "Interview", "Offer", "Onboarding"];
 
 function CareerPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [resume, setResume] = useState<File | null>(null);
+  const [resumeError, setResumeError] = useState<string | null>(null);
+
+  const handleResume = (file: File | null) => {
+    setResumeError(null);
+    if (!file) { setResume(null); return; }
+    const allowed = ["application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"];
+    if (!allowed.includes(file.type) && !/\.(pdf|docx?|rtf)$/i.test(file.name)) {
+      setResumeError("Please upload a PDF, DOC, or DOCX file.");
+      return;
+    }
+    if (file.size > 5 * 1024 * 1024) {
+      setResumeError("File must be under 5MB.");
+      return;
+    }
+    setResume(file);
+  };
   return (
     <>
       <PageHero
