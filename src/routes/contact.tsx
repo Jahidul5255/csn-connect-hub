@@ -135,11 +135,12 @@ function Field({ label, type = "text", required }: { label: string; type?: strin
     </label>
   );
 }
-function SelectField({ label, options }: { label: string; options: string[] }) {
+function SelectField({ label, options, required }: { label: string; options: string[]; required?: boolean }) {
   return (
     <label className="block text-sm">
-      <span className="mb-1.5 block font-medium text-foreground">{label}</span>
-      <select className="w-full rounded-xl border border-input bg-background px-3.5 py-2.5 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/15">
+      <span className="mb-1.5 block font-medium text-foreground">{label}{required && <span className="text-[color:var(--brand-red)]">*</span>}</span>
+      <select required={required} className="w-full rounded-xl border border-input bg-background px-3.5 py-2.5 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/15">
+        <option value="">Select</option>
         {options.map(o => <option key={o}>{o}</option>)}
       </select>
     </label>
