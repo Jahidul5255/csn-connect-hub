@@ -280,7 +280,7 @@ function JobPage() {
               <Meta icon={<Clock className="h-4 w-4" />} label="Type" value={job.type} />
               <Meta icon={<DollarSign className="h-4 w-4" />} label="Compensation" value={job.salary} />
               <Meta icon={<Users className="h-4 w-4" />} label="Status" value={job.posted} />
-              <CTAButton href={`mailto:careers@csnbangladesh.it?subject=Application for ${encodeURIComponent(job.title)}`}>Apply Now</CTAButton>
+              <CTAButton to="/apply" >Apply Now</CTAButton>
             </div>
           </aside>
         </div>
