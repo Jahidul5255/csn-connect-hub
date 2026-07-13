@@ -280,7 +280,13 @@ function JobPage() {
               <Meta icon={<Clock className="h-4 w-4" />} label="Type" value={job.type} />
               <Meta icon={<DollarSign className="h-4 w-4" />} label="Compensation" value={job.salary} />
               <Meta icon={<Users className="h-4 w-4" />} label="Status" value={job.posted} />
-              <CTAButton to="/apply" >Apply Now</CTAButton>
+              <Link
+                to="/apply"
+                search={{ role: job.slug }}
+                className="group inline-flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition hover:opacity-90"
+              >
+                Apply Now <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
+              </Link>
             </div>
           </aside>
         </div>
