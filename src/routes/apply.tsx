@@ -1,0 +1,136 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
+import { PageHero, Section, Eyebrow } from "@/components/site/Primitives";
+import { Upload, FileText, X, ArrowLeft } from "lucide-react";
+
+export const Route = createFileRoute("/apply")({
+  validateSearch: (search: Record<string, unknown>) => ({
+    role: typeof search.role === "string" ? search.role : undefined,
+  }),
+  head: () => ({
+    meta: [
+      { title: "Apply — CSN Careers" },
+      { name: "description", content: "Apply to join the CSN team. Send your CV and tell us how you'd like to contribute." },
+      { property: "og:title", content: "Apply — CSN Careers" },
+      { property: "og:description", content: "Apply to join the CSN team across Italy and Bangladesh." },
+    ],
+  }),
+  component: ApplyPage,
+});
+
+function ApplyPage() {
+  const { role } = Route.useSearch();
+  const [submitted, setSubmitted] = useState(false);
+  const [resume, setResume] = useState<File | null>(null);
+  const [resumeError, setResumeError] = useState<string | null>(null);
+
+  const handleResume = (file: File | null) => {
+    setResumeError(null);
+    if (!file) { setResume(null); return; }
+    const allowed = ["application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"];
+    if (!allowed.includes(file.type) && !/\.(pdf|docx?|rtf)$/i.test(file.name)) {
+      setResumeError("Please upload a PDF, DOC, or DOCX file.");
+      return;
+    }
+    if (file.size > 5 * 1024 * 1024) {
+      setResumeError("File must be under 5MB.");
+      return;
+    }
+    setResume(file);
+  };
+
+  const roleLabel = role ? role.split("-").map((s) => s[0].toUpperCase() + s.slice(1)).join(" ") : "";
+
+  return (
+    <>
+      <PageHero
+        eyebrow="Careers"
+        title={<>Apply to <span className="text-[color:var(--brand-red)]">CSN.</span></>}
+        description={roleLabel ? `You're applying for the ${roleLabel} role. Fill in your details below.` : "Send us your details and CV — we'll review and reach out if there's a fit."}
+      />
+
+      <Section className="bg-[color:var(--color-surface-2)]">
+        <div className="grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:items-start">
+          <div>
+            <Eyebrow>Application form</Eyebrow>
+            <h2 className="mt-3 font-display text-3xl font-bold leading-tight md:text-5xl">Tell us about yourself.</h2>
+            <p className="mt-4 text-base text-muted-foreground md:text-lg">
+              Share your background and attach your CV. We review every application.
+            </p>
+            <Link to="/career" className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline">
+              <ArrowLeft className="h-4 w-4" /> Back to all open roles
+            </Link>
+          </div>
+          <form onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }} className="card-elev space-y-4 p-8">
+            {submitted ? (
+              <div className="rounded-2xl border border-[color:var(--brand-green)]/30 bg-[color:var(--brand-green)]/10 p-6 text-sm">
+                Thanks — we'll review your application and reach out if there's a fit.
+              </div>
+            ) : (
+              <>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <Field label="Full name" required />
+                  <Field label="Email" type="email" required />
+                  <Field label="Phone" type="tel" />
+                  <Field label="Role of interest" defaultValue={roleLabel} />
+                </div>
+                <Field label="LinkedIn / Portfolio URL" type="url" />
+                <div className="block text-sm">
+                  <span className="mb-1.5 block font-medium text-foreground">Resume / CV<span className="text-[color:var(--brand-red)]">*</span></span>
+                  {resume ? (
+                    <div className="flex items-center justify-between gap-3 rounded-xl border border-input bg-background px-3.5 py-2.5">
+                      <div className="flex min-w-0 items-center gap-2.5">
+                        <FileText className="h-4 w-4 shrink-0 text-primary" />
+                        <div className="min-w-0">
+                          <div className="truncate text-sm font-medium">{resume.name}</div>
+                          <div className="text-xs text-muted-foreground">{(resume.size / 1024).toFixed(1)} KB</div>
+                        </div>
+                      </div>
+                      <button type="button" onClick={() => setResume(null)} aria-label="Remove file" className="rounded-full p-1.5 text-muted-foreground hover:bg-muted hover:text-foreground">
+                        <X className="h-4 w-4" />
+                      </button>
+                    </div>
+                  ) : (
+                    <label
+                      onDragOver={(e) => e.preventDefault()}
+                      onDrop={(e) => { e.preventDefault(); handleResume(e.dataTransfer.files?.[0] ?? null); }}
+                      className="flex cursor-pointer flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-input bg-background px-4 py-6 text-center transition hover:border-primary hover:bg-primary/5"
+                    >
+                      <Upload className="h-5 w-5 text-primary" />
+                      <div className="text-sm font-medium">Click to upload or drag and drop</div>
+                      <div className="text-xs text-muted-foreground">PDF, DOC, DOCX — max 5MB</div>
+                      <input
+                        type="file"
+                        accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                        required
+                        className="sr-only"
+                        onChange={(e) => handleResume(e.target.files?.[0] ?? null)}
+                      />
+                    </label>
+                  )}
+                  {resumeError && <p className="mt-1.5 text-xs text-[color:var(--brand-red)]">{resumeError}</p>}
+                </div>
+                <label className="block text-sm">
+                  <span className="mb-1.5 block font-medium">Cover note</span>
+                  <textarea rows={4} className="w-full rounded-xl border border-input bg-background px-3.5 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/15" />
+                </label>
+                <button className="inline-flex w-full items-center justify-center rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground hover:opacity-90">
+                  Submit application
+                </button>
+              </>
+            )}
+          </form>
+        </div>
+      </Section>
+    </>
+  );
+}
+
+function Field({ label, type = "text", required, defaultValue }: { label: string; type?: string; required?: boolean; defaultValue?: string }) {
+  return (
+    <label className="block text-sm">
+      <span className="mb-1.5 block font-medium text-foreground">{label}{required && <span className="text-[color:var(--brand-red)]">*</span>}</span>
+      <input type={type} required={required} defaultValue={defaultValue} className="w-full rounded-xl border border-input bg-background px-3.5 py-2.5 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/15" />
+    </label>
+  );
+}
