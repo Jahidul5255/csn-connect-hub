@@ -39,7 +39,7 @@ function ApplyPage() {
     setResume(file);
   };
 
-  const roleLabel = role ? role.split("-").map((s) => s[0].toUpperCase() + s.slice(1)).join(" ") : "";
+  const roleLabel = role ? role.split("-").map((s: string) => s[0].toUpperCase() + s.slice(1)).join(" ") : "";
 
   return (
     <>
